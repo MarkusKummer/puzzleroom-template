@@ -112,4 +112,31 @@ public class FieldTest {
         // only up allowed here
         assertFalse(player.moveDown());
     }
+
+    @Test
+    public void fieldIceFieldSuccess() throws PuzzleRoomException {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/icefield1.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        player.moveRight();
+        assertEquals(4, player.getCol());
+        assertEquals(1, player.getRow());
+        player.moveRight();
+        assertTrue(gameBoard.isFinished());
+    }
+
+    @Test
+    public void fieldIceFieldFailed2() throws PuzzleRoomException {
+        GameBoard gameBoard = new GameBoardImpl();
+        new CommandLoad(new String[]{"src/test/resources/icefield2.maze"}).execute(gameBoard);
+        Player player = gameBoard.getPlayer();
+
+        player.moveDown();
+        player.moveRight();
+        player.moveDown();
+        assertEquals(3, player.getStepCount());
+        assertTrue(gameBoard.isFinished());
+
+    }
 }

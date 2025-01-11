@@ -1,7 +1,9 @@
 package at.edu.c02.puzzleroom;
 
+import at.edu.c02.puzzleroom.commands.CommandFastMove;
 import at.edu.c02.puzzleroom.commands.CommandLoad;
 import at.edu.c02.puzzleroom.exceptions.PuzzleRoomException;
+import at.edu.c02.puzzleroom.exceptions.PuzzleRoomInvalidMoveException;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -137,6 +139,5 @@ public class FieldTest {
         player.moveDown();
         assertEquals(3, player.getStepCount());
         assertTrue(gameBoard.isFinished());
-
     }
 }
